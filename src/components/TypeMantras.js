@@ -6,14 +6,16 @@ export default class TypeMantras extends React.Component {
 
         this.state = {
             mantra: "",
-            text: ""
+            text: "",
+            timesLeft: 20,
+            currentTimesLeft: 20
         }
     }
 
     render () {
         return (
             <div>
-                <h1>Type the following mantra 20 times:</h1>
+                <h1>Type the following mantra {this.state.currentTimesLeft} times:</h1>
                 <h2>{this.props.mantra}</h2>
                 <textarea onChange={this._handleChange} placeholder="Type Mantra Here" value={this.state.text}></textarea>
             </div>
@@ -23,10 +25,26 @@ export default class TypeMantras extends React.Component {
     _handleChange = (event) => {
         this.setState({
             text: event.target.value
-        })
+        }, () => this._checkMantras())
     }
 
-    _checkMantra = () => {
-        // some stuff to add later
+    _checkMantras = () => {
+        const count = this._countSubStrings(this.state.text, this.props.mantra);
+        if (count > (this.state.timesLeft - this.state.currentTimesLeft)) {
+            this.setState({
+                currentTimesLeft: this.state.timesLeft - count
+            })
+        }
+    }
+
+    _countSubStrings = (str, pattern) => {
+        let count = 0
+        const length = pattern.length;
+        for (let i=0; i<str.length - length; i++) {
+            if(str.slice(i, i+length) === pattern) {
+                ++count;
+            }
+        }
+        return count;
     }
 }
