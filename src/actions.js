@@ -1,4 +1,5 @@
 export const ADD_MANTRA = 'ADD_MANTRA';
+export const SELECT_MANTRA = "SELECT_MANTRA"
 
 export function actionAddMantra(mantra) {
     return {
@@ -6,5 +7,12 @@ export function actionAddMantra(mantra) {
         payload: {
             mantra
         }
+    }
+}
+
+export function actionSelectMantra(id) {
+    return {
+        type: SELECT_MANTRA,
+        payload: id
     }
 }

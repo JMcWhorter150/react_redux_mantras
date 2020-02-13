@@ -5,6 +5,7 @@ import './App.css';
 import mantras from './reducers';
 import MantraList from './containers/MantraListContainer';
 import MantraForm from './containers/MantraFormContainer';
+import TypeMantras from './containers/TypeMantrasContainer';
 
 const store = createStore(mantras)
 
@@ -14,6 +15,7 @@ function App() {
       <Provider store={store}>
         <MantraForm />
         <MantraList />
+        <TypeMantras />
       </Provider>
     </div>
   );

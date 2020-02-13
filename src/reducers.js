@@ -1,18 +1,21 @@
-import { ADD_MANTRA } from "./actions";
+import { ADD_MANTRA, SELECT_MANTRA } from "./actions";
 
-const defaultState = [];
+const defaultState = {
+    mantras:[],
+    currentMantra: 0,
+};
 
 function mantras(state=defaultState, action) {
-    const newState = [...state];
-
+    const newState = { mantras: [...state.mantras], currentMantra:state.currentMantra};
     switch (action.type) {
         case ADD_MANTRA:
-            newState.push(action.payload.mantra);
+            newState.mantras.push(action.payload.mantra);
             break;
+        case SELECT_MANTRA:
+            newState.currentMantra = action.payload;
         default:
             break;
     }
-
     return newState;
 }
 
