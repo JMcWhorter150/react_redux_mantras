@@ -12,7 +12,7 @@ export default class MantraForm extends React.Component {
     render() {
         return (
             <form onSubmit={this._submitForm}>
-                <input onChange={this._updateText} type="text" value={this.state.text}></input>
+                <input placeholder="Add Mantras Here" onChange={this._updateText} type="text" value={this.state.text}></input>
             </form>
         );
     }

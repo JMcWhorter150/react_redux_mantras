@@ -31,7 +31,7 @@ export default class TypeMantras extends React.Component {
         let classThing = this.state.is_spinning ? 'App-logo' : '';
         return (
             <div>
-                <h1 className={classThing}>Type the following mantra {this.state.currentTimesLeft} times:</h1>
+                <h1>Type the following mantra {this.state.currentTimesLeft} times:</h1>
                 <h2 className={classThing}>{this.state.mantra}</h2>
                 <textarea className={classThing} onChange={this._handleChange} placeholder="Type Mantra Here" value={this.state.text}></textarea>
             </div>
