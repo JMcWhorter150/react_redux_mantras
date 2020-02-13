@@ -7,8 +7,9 @@ export default class TypeMantras extends React.Component {
         this.state = {
             mantra: "",
             text: "",
-            timesLeft: 20,
-            currentTimesLeft: 20
+            timesLeft: 10,
+            currentTimesLeft: 10,
+            is_spinning: false
         }
     }
 
@@ -17,8 +18,9 @@ export default class TypeMantras extends React.Component {
             return {
                 mantra: props.mantra,
                 text: "",
-                timesLeft: 20,
-                currentTimesLeft: 20
+                timesLeft: 10,
+                currentTimesLeft: 10,
+                is_spinning: false
             }
         } else {
             return state;
@@ -26,11 +28,12 @@ export default class TypeMantras extends React.Component {
     }
 
     render () {
+        let classThing = this.state.is_spinning ? 'App-logo' : '';
         return (
             <div>
-                <h1>Type the following mantra {this.state.currentTimesLeft} times:</h1>
-                <h2>{this.state.mantra}</h2>
-                <textarea onChange={this._handleChange} placeholder="Type Mantra Here" value={this.state.text}></textarea>
+                <h1 className={classThing}>Type the following mantra {this.state.currentTimesLeft} times:</h1>
+                <h2 className={classThing}>{this.state.mantra}</h2>
+                <textarea className={classThing} onChange={this._handleChange} placeholder="Type Mantra Here" value={this.state.text}></textarea>
             </div>
         );
     }
@@ -38,7 +41,7 @@ export default class TypeMantras extends React.Component {
     _handleChange = (event) => {
         this.setState({
             text: event.target.value
-        }, () => this._checkMantras())
+        }, () => {this._checkMantras()})
     }
 
     _checkMantras = () => {
@@ -46,7 +49,7 @@ export default class TypeMantras extends React.Component {
         if (count > (this.state.timesLeft - this.state.currentTimesLeft)) {
             this.setState({
                 currentTimesLeft: this.state.timesLeft - count
-            })
+            }, () => {this._checkCount()})
         }
     }
 
@@ -59,5 +62,13 @@ export default class TypeMantras extends React.Component {
             }
         }
         return count;
+    }
+
+    _checkCount = () => {
+        if (this.state.currentTimesLeft <= 0) {
+            this.setState({
+                is_spinning: true
+            })
+        }
     }
 }
