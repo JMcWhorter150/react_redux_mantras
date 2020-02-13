@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {actionAddMantra} from '../actions';
-import Input from '../components/Input';
+import MantraForm from '../components/MantraForm';
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -10,4 +10,4 @@ function mapDispatchToProps(dispatch) {
 
 const reduxConnector = connect(null, mapDispatchToProps);
 
-export default reduxConnector(Input);
+export default reduxConnector(MantraForm);

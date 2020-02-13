@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import List from '../components/List'
+import MantraList from '../components/MantraList'
 function mapStateToProps(state) {
     return {
         mantras: state
@@ -8,4 +8,4 @@ function mapStateToProps(state) {
 
 const reduxConnector = connect(mapStateToProps);
 
-export default reduxConnector(List);
+export default reduxConnector(MantraList);

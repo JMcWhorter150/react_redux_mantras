@@ -1,7 +1,6 @@
 import React from 'react';
-import Input from './Input';
 
-export default function List({mantras}) {
+export default function MantraList({mantras}) {
     return (
         <ul>
             {mantras.map((item, i) => (
