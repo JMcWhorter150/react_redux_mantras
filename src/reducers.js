@@ -7,11 +7,12 @@ function mantras(state=defaultState, action) {
 
     switch (action.type) {
         case ADD_MANTRA:
-            newState.push(action.payload);
+            newState.push(action.payload.mantra);
             break;
         default:
             break;
     }
+
     return newState;
 }
 
