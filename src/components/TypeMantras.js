@@ -12,11 +12,24 @@ export default class TypeMantras extends React.Component {
         }
     }
 
+    static getDerivedStateFromProps(props, state) {
+        if(props.mantra !== state.mantra) {
+            return {
+                mantra: props.mantra,
+                text: "",
+                timesLeft: 20,
+                currentTimesLeft: 20
+            }
+        } else {
+            return state;
+        }
+    }
+
     render () {
         return (
             <div>
                 <h1>Type the following mantra {this.state.currentTimesLeft} times:</h1>
-                <h2>{this.props.mantra}</h2>
+                <h2>{this.state.mantra}</h2>
                 <textarea onChange={this._handleChange} placeholder="Type Mantra Here" value={this.state.text}></textarea>
             </div>
         );
